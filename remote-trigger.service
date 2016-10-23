@@ -1,0 +1,9 @@
+[Unit]
+Description=remote-trigger
+
+[Service]
+ExecStart=/usr/local/bin/remote-trigger
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

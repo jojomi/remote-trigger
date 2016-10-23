@@ -1,0 +1,7 @@
+[
+    {
+    	"name": "Test trigger",
+        "url": "test",
+        "command": "./pushed.sh"
+    }
+]
