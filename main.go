@@ -17,9 +17,10 @@ import (
 )
 
 type Trigger struct {
-	Name    string `json:name,omitempty`
-	URL     string `json:url`
-	Command string `json:command`
+	Name        string   `json:name,omitempty`
+	URL         string   `json:url`
+	Command     string   `json:command`
+	CommandArgs []string `json:commandArgs`
 }
 
 var (
@@ -87,7 +88,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	cmd := exec.Command(trigger.Command)
+	cmd := exec.Command(trigger.Command, trigger.CommandArgs...)
 	cmdReader, err := cmd.StdoutPipe()
 	if err != nil {
 		log.WithFields(log.Fields{
